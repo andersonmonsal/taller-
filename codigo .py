@@ -35,12 +35,21 @@ class Game:
                     if next_frame.is_strike() and frame_index < 8:
                         score += self.frames[frame_index + 2].rolls[0]
                 elif frame_index == 9:
-                    score += sum(frame.rolls)  # strike in last frame
+                    score += sum(frame.rolls)
             elif frame.is_spare():
                 if frame_index < 9:
                     score += self.frames[frame_index + 1].rolls[0]
                 elif frame_index == 9:
-                    score += self.frames[frame_index].rolls[2]  # spare in last frame
+                    score += self.frames[frame_index].rolls[2]
             frame_index += 1
         return score
+
+
+game = Game()
+game.roll(10)
+game.roll(5)
+game.roll(5)
+game.roll(9)
+game.roll(0)
+print("Puntaje total:", game.calculate_score())
 
